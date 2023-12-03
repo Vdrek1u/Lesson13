@@ -1,39 +1,50 @@
-﻿#include <iostream>
+﻿//struct tm buf;
+//time_t t = time(0);
+//localtime_s(&buf, &t);
+//Затем, чтобы получить день месяца, возьмите buf.tm_mday.
+#include <iostream>
+#include <time.h>
 
-void PrintToLimit(int Limit, bool StartWith)
+using namespace std;
+
+int main()
 {
-    // Начальное число (true (0) для чётных, false (1) для нечётных)
-    int First = StartWith ? 0 : 1;
+    // размер массива
+    const int N = 6;
+    int Array[N][N];
 
-    for (int i = First; i <= Limit; i += 2) 
+    cout << "Array:\n\n";
+    for (int i = 0; i < N; i++)
     {
-        std::cout << i << " ";
+        for (int j = 0; j < N; j++)
+        {
+            Array[i][j] = i + j;
+            cout << Array[i][j] << " ";
+        }
+        cout << '\n' ;
     }
-    std::cout << '\n';
-}
+    cout << '\n';
 
-int main() 
-{
-    //присваиваем значение лимиту - константу
-    const int N = 54;
+    //получение текущего дня
+    struct tm buf;
+    time_t t = time(0);
+    localtime_s(&buf, &t);
 
-    /* присваиваем значение лимиту через ввод пользователем в консоли
-    int N; 
+    int Day = buf.tm_mday;
 
-    std::cout << "Print even and odd numbers to limit" << '\n' << "Print limit: ";
-    std::cin >> N;
-    std::cout << '\n' << '\n';
-    */
+    //получение номера строки
+    int RowIndex = (Day % N) - 1;
 
-    // Вывод чётных чисел
-    std::cout << "Even:  ";
-    PrintToLimit(N, true);
-    std::cout << '\n';
+    //вывод суммы значений строки массива
+    int Sum = 0;
+    for (int j = 0; j < N; j++)
+    {
+        Sum += Array[RowIndex][j];
+    }
 
-    // Вывод нечётных чисел
-    std::cout << "Odd:   ";
-    PrintToLimit(N, false);
-    std::cout << '\n';
+    cout << "Day:" << Day << '\n';
+    cout << "RowIndex: " << RowIndex << '\n';
+    cout << "SumRowNumbers: " << Sum << '\n';
 
     return 0;
 }
