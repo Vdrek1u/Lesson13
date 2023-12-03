@@ -1,35 +1,39 @@
 ﻿#include <iostream>
 
+void PrintToLimit(int Limit, bool StartWith)
+{
+    // Начальное число (true (0) для чётных, false (1) для нечётных)
+    int First = StartWith ? 0 : 1;
 
-int main() {
- 
-    std::string myString = "My first string - Lesson 14 444444444444444444444444444444444444231212122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222313";
+    for (int i = First; i <= Limit; i += 2) 
+    {
+        std::cout << i << " ";
+    }
+    std::cout << '\n';
+}
 
-    // Вывод строковой переменной
-    std::cout << "String: " << myString << "\n";
+int main() 
+{
+    //присваиваем значение лимиту - константу
+    const int N = 54;
 
-    // Вывод длины строки
-    std::cout << "Length: " << myString.length() << "\n";
+    /* присваиваем значение лимиту через ввод пользователем в консоли
+    int N; 
 
-    // Вывод первого символа строки
-   
-    std::cout << "First symbol: " << myString[0] << "\n";
-    
-    // Вывод последнего символа строки
-    
-    std::cout << "Last symbol: " << myString[myString.length() - 1] << "\n";
+    std::cout << "Print even and odd numbers to limit" << '\n' << "Print limit: ";
+    std::cin >> N;
+    std::cout << '\n' << '\n';
+    */
 
-    // Вывод первого символа строки (вариант 2)
+    // Вывод чётных чисел
+    std::cout << "Even:  ";
+    PrintToLimit(N, true);
+    std::cout << '\n';
 
-    std::cout << "First symbol_2var: " << myString.front() << "\n";
-
-    // Вывод последнего символа строки (вариант 2)
-
-    std::cout << "Last symbol_2var: " << myString.back() << "\n";
-
-    // Вывод максимального размера строки
-
-    std::cout << "Max size: " << myString.max_size() << "\n";
+    // Вывод нечётных чисел
+    std::cout << "Odd:   ";
+    PrintToLimit(N, false);
+    std::cout << '\n';
 
     return 0;
 }
