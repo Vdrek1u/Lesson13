@@ -4,6 +4,7 @@
 //Затем, чтобы получить день месяца, возьмите buf.tm_mday.
 #include <iostream>
 #include <time.h>
+#include <chrono>
 
 using namespace std;
 
@@ -32,8 +33,16 @@ int main()
 
     int Day = buf.tm_mday;
 
+    // тест конкретного дня
+    // int Day = 12;
+
     //получение номера строки
     int RowIndex = (Day % N) - 1;
+
+    if (RowIndex == -1)
+    {
+        RowIndex = N - 1;
+    }
 
     //вывод суммы значений строки массива
     int Sum = 0;
