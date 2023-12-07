@@ -15,25 +15,25 @@ public:
     {}
 
     // Методы для получения координат вектора
-    double getX() 
+    double GetX() 
     {
         return x;
     }
 
-    double getY() 
+    double GetY() 
     {
         return y;
     }
 
-    double getZ() 
+    double GetZ() 
     {
         return z;
     }
 
     // Метод для вычисления длины вектора
-    double length()
+    double Length()
     {
-        return std::sqrt(x * x + y * y + z * z);
+        return sqrt(x * x + y * y + z * z);
     }
 };
 
@@ -43,10 +43,10 @@ int main()
     Vector v(2, 7, 0.95);
 
     // Вывод координат вектора
-    cout << "Vector (" << v.getX() << ", " << v.getY() << ", " << v.getZ() << ")" << '\n';
+    cout << "Vector (" << v.GetX() << ", " << v.GetY() << ", " << v.GetZ() << ")" << '\n';
 
     // Вывод длины вектора
-    cout << "Vector length: " << v.length() << '\n';
+    cout << "Vector length: " << v.Length() << '\n';
 
     return 0;
 }
