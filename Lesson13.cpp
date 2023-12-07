@@ -1,59 +1,52 @@
-﻿//struct tm buf;
-//time_t t = time(0);
-//localtime_s(&buf, &t);
-//Затем, чтобы получить день месяца, возьмите buf.tm_mday.
-#include <iostream>
-#include <time.h>
-#include <chrono>
+﻿#include <iostream>
 
 using namespace std;
 
+class Vector 
+{
+private:
+    double x = 0;
+    double y = 0;
+    double z = 0;
+
+public:
+    // Конструктор
+    Vector(double x, double y, double z) : x(x), y(y), z(z) 
+    {}
+
+    // Методы для получения координат вектора
+    double getX() 
+    {
+        return x;
+    }
+
+    double getY() 
+    {
+        return y;
+    }
+
+    double getZ() 
+    {
+        return z;
+    }
+
+    // Метод для вычисления длины вектора
+    double length()
+    {
+        return std::sqrt(x * x + y * y + z * z);
+    }
+};
+
 int main()
 {
-    // размер массива
-    const int N = 6;
-    int Array[N][N];
+    // Создание вектора
+    Vector v(2, 7, 0.95);
 
-    cout << "Array:\n\n";
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
-            Array[i][j] = i + j;
-            cout << Array[i][j] << " ";
-        }
-        cout << '\n' ;
-    }
-    cout << '\n';
+    // Вывод координат вектора
+    cout << "Vector (" << v.getX() << ", " << v.getY() << ", " << v.getZ() << ")" << '\n';
 
-    //получение текущего дня
-    struct tm buf;
-    time_t t = time(0);
-    localtime_s(&buf, &t);
-
-    int Day = buf.tm_mday;
-
-    // тест конкретного дня
-    // int Day = 12;
-
-    //получение номера строки
-    int RowIndex = (Day % N) - 1;
-
-    if (RowIndex == -1)
-    {
-        RowIndex = N - 1;
-    }
-
-    //вывод суммы значений строки массива
-    int Sum = 0;
-    for (int j = 0; j < N; j++)
-    {
-        Sum += Array[RowIndex][j];
-    }
-
-    cout << "Day:" << Day << '\n';
-    cout << "RowIndex: " << RowIndex << '\n';
-    cout << "SumRowNumbers: " << Sum << '\n';
+    // Вывод длины вектора
+    cout << "Vector length: " << v.length() << '\n';
 
     return 0;
 }
